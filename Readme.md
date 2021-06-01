@@ -36,4 +36,4 @@ python3 send.py
 python3 receive.py
 ```
 - Note 1: `psutil` library of Python is used to measure the usage of main memory and CPU.
-- Note 2: All the message transmission hyappens on the localhost
+- Note 2: All the message transmission is done on the localhost
