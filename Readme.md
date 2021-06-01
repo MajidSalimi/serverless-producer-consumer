@@ -1,8 +1,11 @@
 # Serverless Computing Project
 
-In IoT, in some cases, we need to monitor available devices in case of resource utilization.
-This simple IoT project, monitors RAM and CPU usage every 3 seconds and sends them to the consumer using 2 different queues (one for RAM and one for CPU).
+In IoT, in some cases, we need to monitor available devices in case of resource utilization, for further use-cases.
 
+This simple IoT project (the producer) monitors RAM and CPU usage every 3 seconds and sends the related statistics to 2 different queues of the RabbitMQ message broker. Two queues are defined here, one for transmitting RAM usage and one for CPU usage (As demonstrated in the picture below). Then, the consumer picks these statistics from the corresponding queue and using a function, classifies their usage as "Low", "Average", or "High".
+
+
+![alt text](https://github.com/MajidSalimi/serverless-producer-consumer/blob/master/images/Presentation1.jpg)
 # Requirements
 
 - Ubuntu 20.04
@@ -32,4 +35,5 @@ sudo docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tm
 python3 send.py
 python3 receive.py
 ```
-
+- Note 1: `psutil` library of Python is used to measure the usage of main memory and CPU.
+- Note 2: All the message transmission hyappens on the localhost
